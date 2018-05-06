@@ -13,10 +13,19 @@ class Example(QWidget):
 
 
     def initUI(self):
-        self.setGeometry(300, 300, 300, 220)
-        self.setWindowTitle('Icon')
-        self.setWindowIcon(QIcon('web.png'))
+        QToolTip.setFont(QFont('SansSerif', 10))
 
+        self.setToolTip('This is a <b>QWidget</b> widget')
+
+        btn = QPushButton('Button', self)
+        btn.setToolTip('This is a <b>QPushButton</b> widget')
+
+        btn.resize(btn.sizeHint())
+
+        btn.move(50, 50)
+
+        self.setGeometry(300, 300, 300, 200)
+        self.setWindowTitle('Tooltips')
         self.show()
 
 
