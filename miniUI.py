@@ -3,6 +3,7 @@ import sys
 from PyQt5.QtWidgets import (QWidget, QToolTip,
     QPushButton, QApplication)
 from PyQt5.QtGui import QFont
+from PyQt5.QtCore import QCoreApplication
 
 
 class Example(QWidget):
@@ -22,7 +23,13 @@ class Example(QWidget):
 
         btn.resize(btn.sizeHint())
 
-        btn.move(50, 50)
+        btn.move(150, 50)
+
+        qbtn = QPushButton('Quit', self)
+        qbtn.setToolTip('This is a <b>Quit</b> button!')
+        qbtn.clicked.connect(QCoreApplication.instance().quit)
+        qbtn.resize(qbtn.sizeHint())
+        qbtn.move(50, 50)
 
         self.setGeometry(300, 300, 300, 200)
         self.setWindowTitle('Tooltips')
