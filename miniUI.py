@@ -1,7 +1,9 @@
-import sys
 
-from PyQt5.QtWidgets import (QWidget, QToolTip,
-    QPushButton, QApplication,QMessageBox)
+import sys
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QWidget, QToolTip,  QLCDNumber, QSlider,
+    QHBoxLayout, QVBoxLayout,
+    QPushButton, QApplication,QMessageBox, QLabel)
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QCoreApplication
 
@@ -14,6 +16,19 @@ class Example(QWidget):
 
 
     def initUI(self):
+
+
+        lcd = QLCDNumber(self)
+        sld = QSlider(Qt.Horizontal, self)
+
+        vbox = QVBoxLayout()
+        vbox.addWidget(lcd)
+        vbox.addWidget(sld)
+
+        self.setLayout(vbox)
+        sld.valueChanged.connect(lcd.display)
+
+        self.setLayout(vbox)
         QToolTip.setFont(QFont('SansSerif', 10))
 
         self.setToolTip('This is a <b>QWidget</b> widget')
